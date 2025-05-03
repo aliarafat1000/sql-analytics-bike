@@ -53,7 +53,7 @@ Develop SQL queries to extract key insights from the data warehouse on:
 
 This project follows the **Medallion Architecture**, consisting of three data layers:
 
-![Data Architecture](sql-analytics-bike/data_architecture.png)
+<img width="772" alt="data_architecture" src="https://github.com/user-attachments/assets/23887581-5fd7-4a18-8b99-6f771bd0aaed" />
 
 1. **Bronze Layer**: Raw data ingested directly from CSV files into SQL Server.
 2. **Silver Layer**: Cleansed and standardized data ready for transformation.

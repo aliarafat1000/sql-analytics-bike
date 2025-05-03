@@ -99,9 +99,9 @@ This forms the foundation for further transformations in the **Silver** and **Go
 
 ### 📂 Key Scripts
 
-* [💾 Database and Schema Setup](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/create_schemas.sql)
-* [📄 Bronze Tables DDL](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/create_bronze_tables.sql)
-* [⚙️ Load Bronze Layer Procedure](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/load_bronze_procedure.sql)
+* [💾 Database and Schema Setup](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/init_database.sql)
+* [📄 Bronze Tables DDL](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/bronze/ddl_bronze.sql)
+* [⚙️ Load Bronze Layer Procedure](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/bronze/proc_load_bronze.sql)
 
 
 ---

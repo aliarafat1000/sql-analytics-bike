@@ -59,5 +59,53 @@ This project follows the **Medallion Architecture**, consisting of three data la
 2. **Silver Layer**: Cleansed and standardized data ready for transformation.
 3. **Gold Layer**: Star-schema modeled data designed for analytics and reporting.
 
+
+
 ---
+
+## 🧱 Bronze Layer: Raw Data Ingestion
+
+The first step in our Medallion Architecture implementation is constructing the **Bronze Layer**, where raw data from ERP and CRM systems is ingested into SQL Server for initial staging.
+
+### ✅ What We Did
+
+* **Database & Schema Setup**:
+  Created a dedicated `DataWarehouse` database and defined three schemas:
+
+  * `bronze`: Raw, unprocessed data
+  * `silver`: Cleansed and structured data
+  * `gold`: Star schema for analytics and reporting
+
+* **Table Creation**:
+  Six tables were created under the `bronze` schema to reflect the original structure of CSV source files:
+
+  * `crm_cust_info`
+  * `crm_prd_info`
+  * `crm_sales_details`
+  * `erp_loc_a101`
+  * `erp_cust_az12`
+  * `erp_px_cat_g1v2`
+
+* **Data Loading via Stored Procedure**:
+  A custom stored procedure `bronze.load_bronze` was built to:
+
+  * Truncate existing data to ensure freshness
+  * Use `BULK INSERT` to load CSV files directly into the respective tables
+  * Log processing times for performance tracking
+  * Handle errors gracefully using `TRY...CATCH`
+
+This forms the foundation for further transformations in the **Silver** and **Gold** layers.
+
+
+### 📂 Key Scripts
+
+* [💾 Database and Schema Setup](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/create_schemas.sql)
+* [📄 Bronze Tables DDL](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/create_bronze_tables.sql)
+* [⚙️ Load Bronze Layer Procedure](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/load_bronze_procedure.sql)
+
+
+---
+
+
+
 

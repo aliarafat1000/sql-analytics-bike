@@ -107,5 +107,63 @@ This forms the foundation for further transformations in the **Silver** and **Go
 ---
 
 
+## ⚙️ Silver Layer – Data Transformation & Standardization
+
+The **Silver Layer** is responsible for transforming raw data from the Bronze Layer into a clean, structured, and standardized format that’s ready for business logic and analytics in the Gold Layer.
+
+### 🔧 Objectives
+
+* Clean inconsistent and invalid values
+* Standardize formats across systems
+* Derive meaningful columns for downstream use
+* Ensure relational integrity for joining across datasets
+
+### 🛠️ Key Activities
+
+1. **Table Setup**:
+   Created tables in the `silver` schema mirroring Bronze structure, with added metadata and derived columns.
+
+2. **Data Cleaning & Profiling**:
+
+   * Removed duplicate records using `RANK() OVER (PARTITION BY ...)`
+   * Eliminated null or placeholder keys like `'NAS'` and empty strings
+   * Checked for and removed out-of-range dates (e.g., >2050 or <1900)
+
+3. **Standardization**:
+
+   * Trimmed white spaces using `LTRIM(RTRIM())`
+   * Converted abbreviations to readable values using `CASE WHEN`
+   * Fixed inconsistent formats (e.g., country codes to full names, gender codes to labels)
+
+4. **Derived Columns**:
+
+   * Extracted segments of strings using `SUBSTRING()` (e.g., category ID)
+   * Replaced special characters using `REPLACE()` to prepare join keys
+   * Created end dates using:
+
+     ```sql
+     CAST(DATEADD(DAY, -1, LEAD(start_date, 1) OVER (PARTITION BY key ORDER BY start_date)) AS DATE)
+     ```
+   * Fixed pricing and sales logic using business rules:
+
+     * `sales = quantity * price`
+     * Handled missing or invalid values using `ISNULL()`, `NULLIF()`, `ABS()`
+
+5. **Validation & Loading**:
+
+   * Verified joins between tables using cleaned keys
+   * Checked date logic (e.g., order date < shipping date)
+   * Created a stored procedure to truncate and insert data into Silver tables
+   * Wrapped logic in `TRY...CATCH` for robust error handling
+
+---
+
+
+### 📂 Key Scripts
+
+
+* [📄 Silver Tables DDL](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/bronze/ddl_bronze.sql)
+* [⚙️ Load Silver Layer Procedure](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/bronze/proc_load_bronze.sql)
+
 
 

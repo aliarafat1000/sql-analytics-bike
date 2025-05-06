@@ -162,8 +162,8 @@ The **Silver Layer** is responsible for transforming raw data from the Bronze La
 ### 📂 Key Scripts
 
 
-* [📄 Silver Tables DDL](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/bronze/ddl_bronze.sql)
-* [⚙️ Load Silver Layer Procedure](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/bronze/proc_load_bronze.sql)
+* [📄 Silver Tables DDL](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/silver/ddl_silver.sql)
+* [⚙️ Load Silver Layer Procedure](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/silver/proc_load_silver.sql)
 
 
 

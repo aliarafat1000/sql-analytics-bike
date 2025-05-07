@@ -167,3 +167,76 @@ The **Silver Layer** is responsible for transforming raw data from the Bronze La
 
 
 
+---
+
+## 🟡 Gold Layer – Star Schema for Analytics
+
+The **Gold Layer** represents the final business-ready schema in the data warehouse. It follows the **Star Schema** model, with fully enriched and transformed dimension and fact views that serve as the foundation for analytics and reporting.
+
+---
+
+### 🎯 Objectives
+
+* Deliver a **clean**, **enriched**, and **query-optimized** data model
+* Combine Silver Layer tables to form **dimensional views** (Dimensions & Facts)
+* Apply **business logic**, filtering, and **data enrichment**
+* Make data easy to consume for downstream tools like Power BI, Tableau, or Excel
+
+---
+
+### 🧱 Components
+
+#### 📘 `gold.dim_customers`
+
+A dimension view combining CRM and ERP customer data:
+
+* Generates a **surrogate key** using `ROW_NUMBER()`
+* Resolves customer gender from primary (CRM) and fallback (ERP) sources
+* Joins with `erp_loc_a101` to enrich location data
+* Sample Transformations:
+
+  * Gender fallback using `CASE` and `COALESCE`
+  * Composite joins across CRM and ERP customer keys
+
+#### 📘 `gold.dim_products`
+
+A product dimension view enriched with category metadata:
+
+* Filters out **inactive products** (`prd_end_dt IS NULL`)
+* Joins with `erp_px_cat_g1v2` to bring in category and maintenance info
+* Creates a surrogate `product_key` ordered by start date
+
+#### 📘 `gold.fact_sales`
+
+The central fact view capturing all sales transactions:
+
+* Joins sales data with `dim_products` and `dim_customers`
+* Provides transactional measures like:
+
+  * `sales_amount`
+  * `quantity`
+  * `price`
+* Includes sales lifecycle dates (order, shipping, due)
+
+---
+
+### 🧰 Key SQL Features Used
+
+* `ROW_NUMBER()` for surrogate key generation
+* `CASE`, `COALESCE()` for fallback logic
+* `LEFT JOIN` to enrich dimensions with additional data
+* Filtering historical data using `WHERE` clauses
+* Standard view creation with error-safe `IF OBJECT_ID(...) DROP VIEW` pattern
+
+---
+
+### ⚙️ Usage
+
+* These views are **query-ready** for BI dashboards and reporting
+* No additional transformation is needed downstream
+* Connect directly to reporting tools or query via SQL for ad hoc insights
+
+---
+
+
+

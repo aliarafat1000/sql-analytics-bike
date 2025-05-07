@@ -238,5 +238,6 @@ The central fact view capturing all sales transactions:
 
 ---
 
+* [📄 Gold Tables DDL](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/gold/ddl_gold.sql)
 
 

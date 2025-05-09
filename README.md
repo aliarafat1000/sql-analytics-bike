@@ -303,7 +303,7 @@ After building the cleaned and enriched dimensional and fact tables, the next st
 
 ---
 
-* [📄 Gold Tables DDL](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/gold/ddl_gold.sql)
+* [📄 EDA Script](https://github.com/aliarafat1000/sql-analytics-bike/tree/main/scripts/Exploratory%20Data%20Analysis%20(EDA))
 
 ---
 

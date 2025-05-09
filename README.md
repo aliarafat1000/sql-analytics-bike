@@ -241,3 +241,71 @@ The central fact view capturing all sales transactions:
 * [📄 Gold Tables DDL](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/gold/ddl_gold.sql)
 
 
+Here's a GitHub-style `README.md` section for your **Exploratory Data Analysis (EDA)** work. You can directly **append this** to the previous README that covered data layers (Bronze → Silver → \[Gold]).
+
+---
+
+## 🔍 Exploratory Data Analysis (EDA)
+
+After building the cleaned and enriched dimensional and fact tables, the next step was to perform **exploratory data analysis** using SQL. This helps understand the structure, behavior, and performance of key business entities such as customers, products, and sales.
+
+### 📌 Objectives
+
+* Understand the data's **scope**, **volume**, and **granularity**
+* Identify key **metrics**, **distributions**, and **groupings**
+* Derive early **insights** to inform advanced analytics and dashboarding
+* Practice **dimension vs. measure classification** and business logic reasoning
+
+---
+
+### 🛠️ Skills & Tools Used
+
+| Skill/Tool     | Description                                                           |
+| -------------- | --------------------------------------------------------------------- |
+| SQL            | Used for querying, aggregating, and joining dimension and fact tables |
+| Data Profiling | Column-wise examination using `DISTINCT`, `COUNT`, `MIN`, `MAX`, etc. |
+| Aggregation    | Business metrics calculated using `SUM`, `AVG`, `COUNT(DISTINCT)`     |
+| Joins          | Combined fact table with dimensions for deeper contextual insights    |
+| Grouping       | Used `GROUP BY` and filters to segment data by various dimensions     |
+| Ranking        | Identified top performers using `TOP`, `ORDER BY`, and `ROW_NUMBER()` |
+| Data Reasoning | Interpreted results (e.g., why count vs. count distinct matters)      |
+
+---
+
+### 🗂️ Key Analyses Performed
+
+* 📋 **Schema Exploration**
+  Verified structure and availability of tables and columns
+
+* 🧩 **Dimension Analysis**
+  Explored countries, categories, subcategories, and demographics
+
+* 🕒 **Date Ranges**
+  Checked timespan of sales and customer birthdates to understand historical coverage
+
+* 📈 **Measure Aggregation**
+  Reported total sales, order counts, quantities, and average prices
+
+* 🌍 **Magnitude Analysis**
+  Grouped sales and quantity by geography, gender, and product category
+
+* 🏆 **Ranking & Performance**
+  Identified best/worst-performing products, categories, and top customers
+
+---
+
+### 📊 Sample Insights
+
+* All customers placed at least one order
+* Top 5 products generated a significant share of total revenue
+* Customers are evenly distributed across genders and regions
+* Some subcategories dominate in both sales volume and revenue
+
+---
+
+* [📄 Gold Tables DDL](https://github.com/aliarafat1000/sql-analytics-bike/blob/main/scripts/gold/ddl_gold.sql)
+
+---
+
+
+

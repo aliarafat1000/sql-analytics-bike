@@ -435,19 +435,8 @@ IF OBJECT_ID('gold.report_products', 'V') IS NOT NULL DROP VIEW gold.report_prod
 CREATE VIEW gold.report_products AS ...
 ```
 
-## Usage
+* [📄 Analytics Script](https://github.com/aliarafat1000/sql-analytics-bike/tree/main/scripts/analytics%20and%20eda%20scripts)
 
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/yourusername/data-analysis-sql.git
-   ```
-
-2. Set up your database connection and load the relevant data tables (`fact_sales`, `dim_products`, `dim_customers`, etc.).
-
-3. Execute the SQL queries to generate the reports and analysis.
-
-4. Modify queries to customize the analysis as per your business requirements.
 
 ---
 

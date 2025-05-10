@@ -305,7 +305,150 @@ After building the cleaned and enriched dimensional and fact tables, the next st
 
 * [📄 EDA Script](https://github.com/aliarafat1000/sql-analytics-bike/tree/main/scripts/Exploratory%20Data%20Analysis%20(EDA))
 
+
+
+
+
 ---
 
+# Data Analysis and Reporting in SQL
+
+## Overview
+
+This repository contains a series of SQL queries designed to perform data analysis and generate reports for various business metrics. The analysis covers key aspects such as customer segmentation, product performance, sales contributions, and customer behaviors. The purpose is to provide actionable insights and identify trends for business decision-making.
+
+### Key Areas of Analysis:
+
+1. **Data Segmentation**
+2. **Part-to-Whole Analysis**
+3. **Customer Reports**
+4. **Product Reports**
+
+## Skills Used
+
+* **SQL Aggregate Functions**: `SUM()`, `AVG()`, `COUNT()`
+* **Window Functions**: `SUM() OVER()`, `ROW_NUMBER()`, `RANK()`
+* **Conditional Logic**: `CASE`
+* **Date Functions**: `DATEDIFF()`, `GETDATE()`
+* **Grouping and Filtering**: `GROUP BY`, `HAVING`
+* **Subqueries and CTEs**: `WITH` clauses, Common Table Expressions (CTEs)
+* **Joins**: `INNER JOIN`, `LEFT JOIN`
+
+## Analysis and Findings
+
+### 1. **Data Segmentation Analysis**
+
+**Purpose**: Segment products into cost ranges and customers based on their spending behavior.
+
+**Findings**:
+
+* **Product Segmentation**:
+
+  * Products were segmented by cost into categories such as **Below 100**, **100-500**, **500-1000**, and **Above 1000**.
+  * The most popular segment by product count was the **Below 100** cost range.
+
+* **Customer Segmentation**:
+
+  * Customers were categorized into **VIP**, **Regular**, and **New** based on their spending behavior and lifespan.
+  * The **VIP** segment had a smaller but highly valuable group of customers who spent more than €5000 and had at least 12 months of purchase history.
+
+**SQL Functions Used**: `CASE`, `GROUP BY`, `COUNT()`, `SUM()`, `DATEDIFF()`, `LEFT JOIN`
+
+### 2. **Part-to-Whole Analysis**
+
+**Purpose**: Analyze the contribution of each product category to overall sales.
+
+**Findings**:
+
+* **Sales Contribution by Category**:
+
+  * **Bikes** were the highest contributing category, representing **96.46%** of total sales.
+  * **Accessories** and **Clothing** had much smaller shares, contributing **2.39%** and **1.16%**, respectively.
+
+**SQL Functions Used**: `SUM()`, `WINDOW FUNCTION` (`SUM() OVER()`), `ROUND()`, `CASE`, `GROUP BY`
+
+### 3. **Customer Report**
+
+**Purpose**: Generate a comprehensive customer report with key metrics and behavior segmentation.
+
+**Findings**:
+
+* The report segments customers by **age groups** (Under 20, 20-29, 30-39, etc.) and **customer segments** (VIP, Regular, New).
+* Key metrics calculated included:
+
+  * **Total orders**, **Total sales**, **Total quantity purchased**
+  * **Average order value** (AOV), **Average monthly spend**
+  * **Recency** (months since last order)
+
+**SQL Functions Used**: `CASE`, `COUNT()`, `SUM()`, `DATEDIFF()`, `AVG()`, `GROUP BY`, `LEFT JOIN`
+
+### 4. **Product Report**
+
+**Purpose**: Analyze product performance and categorize products into **High-Performer**, **Mid-Range**, and **Low-Performer** based on sales data.
+
+**Findings**:
+
+* Products were classified into three segments based on total sales:
+
+  * **High-Performer**: Products with sales greater than **€50,000**
+  * **Mid-Range**: Products with sales between **€10,000** and **€50,000**
+  * **Low-Performer**: Products with sales below **€10,000**
+* Key metrics included:
+
+  * **Total orders**, **Total sales**, **Total quantity sold**
+  * **Average selling price**, **Average order revenue**, **Average monthly revenue**
+  * **Recency** (months since last sale)
+
+**SQL Functions Used**: `CASE`, `COUNT()`, `SUM()`, `AVG()`, `DATEDIFF()`, `LEFT JOIN`, `GROUP BY`, `ROUND()`
+
+## Queries Overview
+
+### 1. Data Segmentation Query
+
+```sql
+-- Segmentation of products into cost ranges and customer segmentation by spending
+WITH product_segments AS (...), customer_spending AS (...) 
+SELECT ... FROM product_segments GROUP BY cost_range;
+```
+
+### 2. Part-to-Whole Analysis Query
+
+```sql
+-- Analyzing the contribution of product categories to overall sales
+WITH category_sales AS (...) 
+SELECT ... FROM category_sales ORDER BY total_sales DESC;
+```
+
+### 3. Customer Report Query
+
+```sql
+-- Consolidating customer metrics such as total orders, total sales, and recency
+IF OBJECT_ID('gold.report_customers', 'V') IS NOT NULL DROP VIEW gold.report_customers;
+CREATE VIEW gold.report_customers AS ...
+```
+
+### 4. Product Report Query
+
+```sql
+-- Generating a product performance report, categorizing products by total sales
+IF OBJECT_ID('gold.report_products', 'V') IS NOT NULL DROP VIEW gold.report_products;
+CREATE VIEW gold.report_products AS ...
+```
+
+## Usage
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/data-analysis-sql.git
+   ```
+
+2. Set up your database connection and load the relevant data tables (`fact_sales`, `dim_products`, `dim_customers`, etc.).
+
+3. Execute the SQL queries to generate the reports and analysis.
+
+4. Modify queries to customize the analysis as per your business requirements.
+
+---
 
 
